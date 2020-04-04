@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style>
+        .purple-square-container {
+            background-color: white;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .purple-square {
+            position: relative;
+            background-image: url("images/back.png");
+            background-repeat: no-repeat;
+            width: 940px;
+            height: 450px;
+        }
+        
+        .conversation {
+            position: absolute;
+            display: inline-block;
+            opacity: 0%;
+            transition: opacity .25s ease-in-out;
+            -moz-transition: opacity .25s ease-in-out;
+            -webkit-transition: opacity .25s ease-in-out;
+        }
+        
+        .show {
+            opacity: 100%;
+        }
+        
+        .hide {
+            opacity: 0%;
+        }
+        
+        .conversation-spiderman {
+            top: 12%;
+            left: 34%;
+        }
+        
+        .conversation-minion {
+            top: 25%;
+            left: 35%;
+        }
+        
+        .speech-bubble-left {
+            width: 140px;
+            position: relative;
+            background: white;
+            border-color: black;
+            border-style: solid;
+            border-radius: 40px;
+        }
+        
+        .speech-bubble-left:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 12px solid transparent;
+            border-right-color: black;
+            border-left: 0;
+            border-bottom: 0;
+            margin-top: -6px;
+            margin-left: -12px;
+        }
+        
+        .speech-bubble-right {
+            width: 143px;
+            position: relative;
+            background: white;
+            border-color: black;
+            border-style: solid;
+            border-radius: 40px;
+        }
+        
+        .speech-bubble-right:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 12px solid transparent;
+            border-left-color: black;
+            border-right: 0;
+            border-bottom: 0;
+            margin-top: -6px;
+            margin-right: -12px;
+        }
+        
+        .speech-bubble-left,
+        .speech-bubble-right * {
+            text-align: center;
+        }
+    </style>
+
+    <title>仙女的遊戲</title>
+</head>
+
+<body>
+
+    <div class="purple-square-container">
+        <div class="purple-square">
+            <hgroup id="spiderman1" class="speech-bubble-left conversation conversation-spiderman">
+                <h3>Hello Minion!</h3>
+            </hgroup>
+            <hgroup id="minion1" class="speech-bubble-right conversation conversation-minion">
+                <h3>Hello Spiderman!</h3>
+            </hgroup>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                showElement("#spiderman1")
+            }, 2000);
+
+            setTimeout(function() {
+                showElement("#minion1")
+            }, 4000);
+
+            setTimeout(function() {
+                hideElement("#spiderman1");
+                changeText("#spiderman1 h3", "I am bored! Do you want to play something?");
+                showElement("#spiderman1");
+            }, 6000);
+
+            setTimeout(function() {
+                hideElement("minion1");
+                changeText("#minion1 h3", "Sure, what do you want to play?");
+                showElement("minion1");
+            }, 8000);
+
+            setTimeout(function() {
+                hideElement("#spiderman1");
+                changeText("#spiderman1 h3", "Do you know the game called guess the number?");
+                showElement("#spiderman1");
+            }, 10000);
+
+            setTimeout(function() {
+                hideElement("minion1");
+                changeText("#minion1 h3", "No, but it sounds very fun!");
+                showElement("minion1");
+            }, 12000);
+
+            setTimeout(function() {
+                hideElement("#spiderman1");
+                changeText("#spiderman1 h3", "Want to try it out?");
+                showElement("#spiderman1");
+            }, 14000);
+
+            setTimeout(function() {
+                hideElement("minion1");
+                changeText("#minion1 h3", "Of course! Lets play :)");
+                showElement("minion1");
+            }, 16000);
+        });
+
+        function hideElement(id) {
+            $(id).removeClass("show")
+            $(id).addClass("hide");
+        }
+
+        function showElement(id) {
+            $(id).removeClass("hide");
+            $(id).addClass("show");
+        }
+
+        function changeText(id, text) {
+            $(id).text(text);
+        }
+    </script>
+</body>
+
+</html>
